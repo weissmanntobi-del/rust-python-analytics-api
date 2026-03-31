@@ -1,3 +1,4 @@
+# Book Link : https://tobiweissmann.gumroad.com/l/wcylm
 # Rust for Python Developers: Production-Grade Analytics API
 
 A practical Rust project that teaches Python developers how to build a real backend service with:
