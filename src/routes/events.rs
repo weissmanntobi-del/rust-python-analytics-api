@@ -1,5 +1,7 @@
 use crate::{
-    dto::event::{RecentEventsQuery, RecentEventsResponse, TrackEventAcceptedResponse, TrackEventRequest},
+    dto::event::{
+        RecentEventsQuery, RecentEventsResponse, TrackEventAcceptedResponse, TrackEventRequest,
+    },
     error::{AppError, AppResult},
     repository::event_repository,
     services::auth_service,
@@ -65,12 +67,16 @@ async fn recent_events(
 
 fn validate_track_request(payload: &TrackEventRequest) -> AppResult<()> {
     if payload.event_name.trim().is_empty() {
-        return Err(AppError::Validation("event_name must not be empty".to_string()));
+        return Err(AppError::Validation(
+            "event_name must not be empty".to_string(),
+        ));
     }
 
     if let Some(session_id) = &payload.session_id {
         if session_id.trim().is_empty() {
-            return Err(AppError::Validation("session_id must not be empty when provided".to_string()));
+            return Err(AppError::Validation(
+                "session_id must not be empty when provided".to_string(),
+            ));
         }
     }
 

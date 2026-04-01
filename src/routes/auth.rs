@@ -1,6 +1,6 @@
 use crate::{
     dto::auth::{AuthResponse, LoginRequest, RegisterRequest},
-    error::{ AppResult},
+    error::AppResult,
     services::auth_service,
     state::AppState,
 };

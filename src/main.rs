@@ -1,10 +1,7 @@
 use anyhow::Context;
 use redis::aio::ConnectionManager;
 use rust_python_analytics_api::{
-    app::build_router,
-    config::AppConfig,
-    queue::spawn_event_worker,
-    state::AppState,
+    app::build_router, config::AppConfig, queue::spawn_event_worker, state::AppState,
 };
 use sqlx::postgres::PgPoolOptions;
 use tokio::sync::mpsc;
@@ -28,8 +25,8 @@ async fn main() -> anyhow::Result<()> {
         .await
         .context("failed to run migrations")?;
 
-    let redis_client = redis::Client::open(config.redis_url.clone())
-        .context("failed to create redis client")?;
+    let redis_client =
+        redis::Client::open(config.redis_url.clone()).context("failed to create redis client")?;
 
     let redis = ConnectionManager::new(redis_client)
         .await

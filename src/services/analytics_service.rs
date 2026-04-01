@@ -1,7 +1,5 @@
 use crate::{
-    dto::analytics::{
-        SummaryQuery, SummaryResponse, TimeseriesQuery, TimeseriesResponse,
-    },
+    dto::analytics::{SummaryQuery, SummaryResponse, TimeseriesQuery, TimeseriesResponse},
     error::{AppError, AppResult},
     repository::event_repository,
     state::AppState,

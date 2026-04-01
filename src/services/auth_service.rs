@@ -43,10 +43,12 @@ pub fn validate_register_request(payload: &RegisterRequest) -> AppResult<()> {
 }
 
 pub async fn register_user(state: &AppState, payload: RegisterRequest) -> AppResult<AuthResponse> {
-    if user_repository::find_by_email(&state.db, &payload.email).await?.is_some() {
+    if user_repository::find_by_email(&state.db, &payload.email)
+        .await?
+        .is_some()
+    {
         return Err(AppError::Conflict("email already exists".to_string()));
     }
-
     let password_hash = hash(payload.password, state.config.bcrypt_cost)?;
     let api_key = generate_api_key();
     let stored = user_repository::create_user(
